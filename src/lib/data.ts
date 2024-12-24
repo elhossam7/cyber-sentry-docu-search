@@ -93,5 +93,47 @@ export const cyberAttacks: CyberAttack[] = [
       { label: "Success Rate", value: 40 },
       { label: "Average Cost", value: 85 }
     ]
+  },
+  {
+    id: "5",
+    name: "NMAP Network Scanning",
+    category: "Reconnaissance",
+    description: "NMAP (Network Mapper) is a powerful network scanning tool used to discover hosts and services on computer networks. While legitimate for network administration, it's often used by attackers for network discovery and security auditing.",
+    impact: "Network mapping, port scanning, service enumeration, vulnerability assessment",
+    mitigation: "Implement firewalls, IDS/IPS systems, restrict unnecessary open ports, and monitor for suspicious scanning activity",
+    diagram: "photo-1558494949-ef010cbdcc31",
+    steps: [
+      "Initial network range identification",
+      "Host discovery scan execution",
+      "Port scanning and service detection",
+      "Operating system fingerprinting",
+      "Vulnerability identification"
+    ],
+    statistics: [
+      { label: "Detection Rate", value: 75 },
+      { label: "Prevention Success", value: 65 },
+      { label: "Network Impact", value: 40 }
+    ]
+  },
+  {
+    id: "6",
+    name: "Man-in-the-Middle (MITM)",
+    category: "Network Attack",
+    description: "A Man-in-the-Middle attack occurs when an attacker secretly intercepts and relays messages between two parties who believe they are directly communicating with each other. This allows the attacker to eavesdrop and potentially modify the communication.",
+    impact: "Data theft, communication interception, credential stealing, session hijacking",
+    mitigation: "Use strong encryption (HTTPS, SSL/TLS), certificate pinning, VPNs, and secure authentication protocols",
+    diagram: "photo-1563089145-599997674d42",
+    steps: [
+      "Network traffic interception setup",
+      "ARP spoofing or DNS poisoning",
+      "SSL/TLS certificate spoofing",
+      "Traffic monitoring and data capture",
+      "Optional: Active traffic manipulation"
+    ],
+    statistics: [
+      { label: "Success Rate", value: 55 },
+      { label: "Data Exposure Risk", value: 85 },
+      { label: "Detection Difficulty", value: 70 }
+    ]
   }
 ];
