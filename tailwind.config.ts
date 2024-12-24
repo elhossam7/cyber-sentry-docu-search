@@ -19,6 +19,9 @@ export default {
     },
     extend: {
       colors: {
+        border: "rgba(0, 242, 254, 0.1)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         cyber: {
           accent: "#00f2fe",
           dark: "#0a0f1c",

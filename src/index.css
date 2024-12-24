@@ -5,11 +5,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: #0a0f1c;
+    --foreground: #e0e0ff;
+  }
+
   body {
     @apply bg-cyber-dark text-cyber-text font-mono;
   }
   * {
-    @apply border-border;
+    @apply border-[#1a2035];
   }
 
   body {
