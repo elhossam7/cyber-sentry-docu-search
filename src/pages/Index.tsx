@@ -5,6 +5,7 @@ import { cyberAttacks } from "@/lib/data";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
 
   const filteredAttacks = cyberAttacks.filter((attack) =>
     attack.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -14,6 +15,13 @@ const Index = () => {
     attack.mitigation.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleSearch = (value: string) => {
+    setSearchQuery(value);
+    if (value.length > 0) {
+      setHasSearched(true);
+    }
+  };
+
   return (
     <div className="min-h-screen cyber-grid">
       <div className="container py-12">
@@ -22,21 +30,31 @@ const Index = () => {
             Cyber Attack Database
           </h1>
           <p className="text-lg text-cyber-text/80 mb-8">
-            Explore detailed documentation about various cyber security threats and attacks
+            Search and explore detailed documentation about various cyber security threats
           </p>
-          <SearchBar value={searchQuery} onChange={setSearchQuery} />
+          <SearchBar value={searchQuery} onChange={handleSearch} />
         </div>
         
-        <div className="grid gap-8 max-w-7xl mx-auto">
-          {filteredAttacks.map((attack) => (
-            <AttackCard key={attack.id} attack={attack} />
-          ))}
-        </div>
-        
-        {filteredAttacks.length === 0 && (
-          <div className="text-center mt-12">
-            <p className="text-cyber-text/60">No attacks found matching your search criteria.</p>
+        {!hasSearched && searchQuery === "" ? (
+          <div className="text-center mt-16">
+            <p className="text-cyber-text/60 text-lg">
+              Start typing to search for cyber attacks...
+            </p>
           </div>
+        ) : (
+          <>
+            {filteredAttacks.length > 0 ? (
+              <div className="grid gap-8 max-w-7xl mx-auto">
+                {filteredAttacks.map((attack) => (
+                  <AttackCard key={attack.id} attack={attack} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center mt-12">
+                <p className="text-cyber-text/60">No attacks found matching "{searchQuery}"</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
