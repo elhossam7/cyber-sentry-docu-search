@@ -43,6 +43,14 @@ const Index = () => {
           </div>
         ) : (
           <>
+            {searchQuery && (
+              <div className="text-center mb-8">
+                <p className="text-cyber-text/80 text-lg">
+                  Showing results for: <span className="text-cyber-accent font-semibold">"{searchQuery}"</span>
+                </p>
+              </div>
+            )}
+            
             {filteredAttacks.length > 0 ? (
               <div className="grid gap-8 max-w-7xl mx-auto">
                 {filteredAttacks.map((attack) => (
